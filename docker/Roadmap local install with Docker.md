@@ -1,6 +1,7 @@
 # Roadmap local install with Docker
 
 ## Steps to clone repos
+
 Clone Docker
 
 ```cmd
@@ -18,7 +19,7 @@ Create a .env file based on .env_example:
 
 - Change '<PLACE_HOLDER>' in line 2 with a password for 'POSTGRES_PASSWORD=<PLACE_HOLDER>'
 - Change database name if necessary
-- Mac user will need to comment line 15 and uncomment line 16 #ALPINE_SUFFIX=-alpine
+- Mac user will need to comment line 16 and uncomment line 17 #ALPINE_SUFFIX=-alpine
 
 ## Steps to build Docker instance
 

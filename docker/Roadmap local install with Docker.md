@@ -1,5 +1,27 @@
 # Roadmap local install with Docker
 
+## Steps to clone repos
+Clone Docker
+
+```cmd
+> git clone git@github.com:DMPRoadmap/roadmap-devres.git
+> cd roadmap-devres/docker
+```
+
+Clone Roadmap
+
+```cmd
+> git clone git@github.com:DMPRoadmap/roadmap.git
+```
+
+Create a .env file based on .env_example:
+
+- Change '<PLACE_HOLDER>' in line 2 with a password for 'POSTGRES_PASSWORD=<PLACE_HOLDER>'
+- Change database name if necessary
+- Mac user will need to comment line 15 and uncomment line 16 #ALPINE_SUFFIX=-alpine
+
+## Steps to build Docker instance
+
 ```cmd
 1. Build the container
     > docker compose --env-file .env build --no-cache
@@ -12,10 +34,6 @@
 5.  Credentials
     > rails credentials:edit
     Add these 
-        # aws:
-        #   access_key_id: 123
-        #   secret_access_key: 345
-
         # Recaptcha credentials
         recaptcha:
         site_key: 11111

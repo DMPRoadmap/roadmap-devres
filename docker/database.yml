@@ -13,6 +13,7 @@ staging:
   database: <%= ENV['POSTGRES_DB'] %>
   username: <%= Rails.application.credentials.dig(:database, :username) %>
   password: <%= Rails.application.credentials.dig(:database, :password) %>
+  pool: <%= ENV['DB_POOL'] %>
 development:
   adapter: postgresql
   encoding: utf8

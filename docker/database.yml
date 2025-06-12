@@ -6,11 +6,11 @@ production:
   username: <%= Rails.application.credentials.dig(:database, :username) %>
   password: <%= Rails.application.credentials.dig(:database, :password) %>
   pool: <%= ENV['DB_POOL'] %>
-test:
+staging:
   adapter: postgresql
   encoding: utf8
   host: db
-  database: <%= ENV['POSTGRES_TEST'] %>
+  database: <%= ENV['POSTGRES_DB'] %>
   username: <%= Rails.application.credentials.dig(:database, :username) %>
   password: <%= Rails.application.credentials.dig(:database, :password) %>
 development:

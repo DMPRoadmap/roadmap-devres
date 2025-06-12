@@ -43,7 +43,7 @@ Create a .env file based on .env_example:
         dragonfly_secret: "my_dragonfly_secret"
 
         devise_pepper: "111122223333444455555"
-6. Load DB
+6. Load DB with seeds file
     > rails db:setup
     > rails db:migrate
 7. Clear the assets

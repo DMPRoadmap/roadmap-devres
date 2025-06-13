@@ -2,23 +2,23 @@ production:
   adapter: postgresql
   encoding: utf8
   host: db
-  database: <%= ENV['POSTGRES_DB'] %>
-  username: <%= Rails.application.credentials.dig(:database, :username) %>
-  password: <%= Rails.application.credentials.dig(:database, :password) %>
+  database: <%= ENV['DB_NAME'] %>
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
   pool: <%= ENV['DB_POOL'] %>
 staging:
   adapter: postgresql
   encoding: utf8
   host: db
-  database: <%= ENV['POSTGRES_DB'] %>
-  username: <%= Rails.application.credentials.dig(:database, :username) %>
-  password: <%= Rails.application.credentials.dig(:database, :password) %>
+  database: <%= ENV['DB_NAME'] %>
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
   pool: <%= ENV['DB_POOL'] %>
 development:
   adapter: postgresql
   encoding: utf8
   host: db
-  database: <%= ENV['POSTGRES_DB'] %>
-  username: <%= Rails.application.credentials.dig(:database, :username) %>
-  password: <%= Rails.application.credentials.dig(:database, :password) %>
+  database: <%= ENV['DB_NAME'] %>
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
   pool: <%= ENV['DB_POOL'] %>

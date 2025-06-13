@@ -6,3 +6,6 @@ roadmap/
 
 # ignore logs
 logs/
+
+# ignore local mac files
+.DS_store

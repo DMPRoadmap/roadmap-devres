@@ -1,11 +1,12 @@
 # Ignore all .env files
-.env
+docker/.env
 
 # ignore roadmap folder
-roadmap/
+docker/roadmap/
 
 # ignore logs
-logs/
+docker/logs/
 
 # ignore local mac files
 .DS_Store
+docker/.DS_Store

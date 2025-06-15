@@ -5,14 +5,14 @@
 ### Clone the Docker configuration repo
 
 ```cmd
-> git clone git@github.com:DMPRoadmap/roadmap-devres.git
-> cd roadmap-devres/docker
+git clone git@github.com:DMPRoadmap/roadmap-devres.git
+cd roadmap-devres/docker
 ```
 
 ### Clone the Roadmap application repo
 
 ```cmd
-> git clone git@github.com:DMPRoadmap/roadmap.git
+git clone git@github.com:DMPRoadmap/roadmap.git
 ```
 ## 2. Configure environment variables
 
@@ -23,20 +23,30 @@ Create a `.env` file in the `roadmap-devres/docker` directory based on the provi
 
 ## 3. Build and set up Docker environment
 
-```cmd
 1. Build the container:
-    > docker compose build --no-cache
+    ```bash
+    docker compose build --no-cache
+    ```
 2. Run the container and enter it:
-    > docker compose run server /bin/bash  
-3. Install Ruby and Javascript dependencies
-    > bundle install; yarn install;
-4. Create the database, load schema and seed data, then run any pending migrations
-    > rails db:setup; rails db:migrate;
-5. Clear and then precompile the assets
-    > rails assets:clobber; rails assets:precompile
-6. Exit the container
-7. Serve up the application services
-    > docker compose up
-8. Open browser and go to:
-    localhost:3000
-```
+    ```bash
+    docker compose run server /bin/bash
+    ```  
+3. Install Ruby and Javascript dependencies:
+    ```bash
+    bundle install; yarn install;
+    ```
+4. Create the database, load schema and seed data, then run any pending migrations:
+    ```bash
+    rails db:setup; rails db:migrate;
+    ```
+5. Clear and then precompile the assets:
+    ```bash
+    rails assets:clobber; rails assets:precompile
+    ```   
+6. Exit the container:
+7. Serve up the application services:
+    ```bash
+    docker compose up
+    ```
+8. Open browser and go to: 
+    ```http://localhost:3000```

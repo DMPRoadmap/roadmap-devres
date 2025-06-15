@@ -1,61 +1,42 @@
-# Roadmap local install with Docker
+# Roadmap: local install with Docker
 
-## Steps to clone repos
+## 1. Clone the repositories
 
-Clone Docker
+### Clone the Docker configuration repo
 
 ```cmd
 > git clone git@github.com:DMPRoadmap/roadmap-devres.git
 > cd roadmap-devres/docker
 ```
 
-Clone Roadmap
+### Clone the Roadmap application repo
 
 ```cmd
 > git clone git@github.com:DMPRoadmap/roadmap.git
 ```
+## 2. Configure environment variables
 
-Create a .env file based on .env_example:
+Create a `.env` file in the `roadmap-devres/docker` directory based on the provided example:
 
-- Change '<PLACE_HOLDER>' in line 2 with a password for 'POSTGRES_PASSWORD=<PLACE_HOLDER>'
-- Change database name if necessary
-- Mac user will need to comment line 16 and uncomment line 17 #ALPINE_SUFFIX=-alpine
+- In the 'Credentials' section, set your desired value for each key.
+- Mac users will need to set the value of the `ALPINE_SUFFIX` key to `-alpine`.
 
-## Steps to build Docker instance
+## 3. Build and set up Docker environment
 
 ```cmd
-1. Build the container
-    > docker compose --env-file .env build --no-cache
-2. Run command line in the container
-    > docker compose --env-file .env run server /bin/bash  
-3. Bundle install
-    > bundle install
-4. Yarn install
-    > yarn install
-5.  Credentials
-    > rails credentials:edit
-    Add these 
-        # Recaptcha credentials
-        recaptcha:
-        site_key: 11111
-        secret_key: 22222
-
-        dragonfly_secret: "my_dragonfly_secret"
-
-        devise_pepper: "111122223333444455555"
-6. Load DB with seeds file
-    > rails db:setup
-    > rails db:migrate
-7. Clear the assets
-    > rails assets:clobber
-8. Precompile assets
-    > DISABLE_DATABASE=true DISABLE_SPRING=true bundle exec rails assets:precompile
-9. Yarn build
-    > DISABLE_DATABASE=true DISABLE_SPRING=true yarn build
-10. Yarn build css
-    > DISABLE_DATABASE=true DISABLE_SPRING=true yarn build:css
-11. Start the container
-    > docker compose --env-file .env up
-12. Open browser 
-    localhost:2001
+1. Build the container:
+    > docker compose build --no-cache
+2. Run the container and enter it:
+    > docker compose run server /bin/bash  
+3. Install Ruby and Javascript dependencies
+    > bundle install; yarn install;
+4. Create the database, load schema and seed data, then run any pending migrations
+    > rails db:setup; rails db:migrate;
+5. Clear and then precompile the assets
+    > rails assets:clobber; rails assets:precompile
+6. Exit the container
+7. Serve up the application services
+    > docker compose up
+8. Open browser and go to:
+    localhost:3000
 ```

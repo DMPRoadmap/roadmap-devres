@@ -13,6 +13,9 @@ cd roadmap-devres/docker
 
 ```cmd
 git clone git@github.com:DMPRoadmap/roadmap.git
+
+# then checkout the rails_8 branch
+git checkout rails_8
 ```
 ## 2. Configure environment variables
 

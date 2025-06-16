@@ -6,8 +6,6 @@ services:
       # application mounts
       - ./:/usr/src/app:consistent
       # configuration mounts
-      - ./database.yml:/usr/src/app/config/database.yml:cached
-      # other mounts
       - ./db_buffer/:/tmp/backups/:cached
       - ${LOGS_LOCATION}:/usr/src/app/log/
       - bundle:/bundle

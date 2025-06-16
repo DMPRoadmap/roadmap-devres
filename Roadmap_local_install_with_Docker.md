@@ -22,24 +22,18 @@ git checkout rails_8
 
 ```cmd
     # .env.example
-    
+    cp ../roadmap-devres/docker/.env.example .env
     # Dockerfile
-
+    cp ../roadmap-devres/docker/Dockerfile Dockerfile
     # docker-compose.yml
-
-```
-
-### edit files names to remove '.example' sufix
-
-```cmd
-    # .env.example
-
+    cp ../roadmap-devres/docker/docker-compose.yml docker-compose.yml
     # /config/database.yml.example
+    cp config/database.yml.example config/database.yml
 ```
 
 ## 2. Configure environment variables
 
-Create a `.env` file in the `roadmap-devres/docker` directory based on the provided example:
+One might need to add their own config changes to `.env` file based on the provided example:
 
 - In the 'Credentials' section, set your desired value for each key.
 - Mac users will need to set the value of the `ALPINE_SUFFIX` key to `-alpine`.

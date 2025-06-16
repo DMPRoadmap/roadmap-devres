@@ -40,7 +40,7 @@ RUN wget --quiet https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.
 
 
 # re-build from here if Gemfile or .lock change
-COPY ./roadmap/Gemfile ./
+COPY ./Gemfile ./
 RUN gem install bundler
 RUN bundle config set without 'mysql thin'
 RUN bundle install

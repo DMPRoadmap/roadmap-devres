@@ -41,29 +41,41 @@ One might need to add their own config changes to `.env` file based on the provi
 ## 3. Build and set up Docker environment
 
 1. Build the container:
-    ```bash
+
+```bash
     docker compose build --no-cache
-    ```
+```
+
 2. Run the container and enter it:
-    ```bash
+
+```bash
     docker compose run server /bin/bash
-    ```  
+```
+
 3. Install Ruby and Javascript dependencies:
-    ```bash
+
+```bash
     bundle install; yarn install;
-    ```
+```
+
 4. Create the database, load schema and seed data, then run any pending migrations:
-    ```bash
+
+```bash
     rails db:setup; rails db:migrate;
-    ```
-5. Clear and then precompile the assets:
-    ```bash
+```
+
+3. Clear and then precompile the assets:
+
+```bash
     rails assets:clobber; rails assets:precompile
-    ```   
-6. Exit the container:
-7. Serve up the application services:
-    ```bash
+```
+
+4. Exit the container:
+5. Serve up the application services:
+
+```bash
     docker compose up
-    ```
-8. Open browser and go to: 
+```
+
+6. Open browser and go to:
     ```http://localhost:3000```

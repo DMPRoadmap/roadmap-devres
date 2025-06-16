@@ -1,5 +1,7 @@
 services:
   server:
+    env_file:
+      - ./.env
     build:
       context: ./
     volumes:
@@ -15,6 +17,8 @@ services:
       - db
 
   db:
+    env_file:
+      - ./.env
     image: postgres:9.5.5${ALPINE_SUFFIX}
     volumes:
       - db_volume:/var/lib/postgresql/data

@@ -4,7 +4,7 @@ services:
       context: ./
     volumes:
       # application mounts
-      - ./roadmap:/usr/src/app:consistent
+      - ./:/usr/src/app:consistent
       # configuration mounts
       - ./database.yml:/usr/src/app/config/database.yml:cached
       # other mounts
@@ -14,8 +14,8 @@ services:
    
     ports:
       - ${HOST_PORT}:${CONTAINER_PORT}
-    env_file:
-      - "./.env"
+    # env_file:
+    #   - "./.env"
     
     depends_on:
       - db
@@ -24,8 +24,8 @@ services:
     image: postgres:9.5.5${ALPINE_SUFFIX}
     volumes:
       - db_volume:/var/lib/postgresql/data
-    env_file:
-      - "./.env"
+    # env_file:
+    #   - "./.env"
     environment: 
       POSTGRES_USER: ${DB_USERNAME}
       POSTGRES_PASSWORD: ${DB_PASSWORD}

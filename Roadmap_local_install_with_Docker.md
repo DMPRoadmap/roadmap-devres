@@ -6,17 +6,37 @@
 
 ```cmd
 git clone git@github.com:DMPRoadmap/roadmap-devres.git
-cd roadmap-devres/docker
 ```
 
 ### Clone the Roadmap application repo
 
 ```cmd
 git clone git@github.com:DMPRoadmap/roadmap.git
+cd roadmap
 
 # then checkout the rails_8 branch
 git checkout rails_8
 ```
+
+### copy files into ./roadmap
+
+```cmd
+    # .env.example
+    
+    # Dockerfile
+
+    # docker-compose.yml
+
+```
+
+### edit files names to remove '.example' sufix
+
+```cmd
+    # .env.example
+
+    # /config/database.yml.example
+```
+
 ## 2. Configure environment variables
 
 Create a `.env` file in the `roadmap-devres/docker` directory based on the provided example:

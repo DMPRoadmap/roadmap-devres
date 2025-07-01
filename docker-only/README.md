@@ -233,13 +233,15 @@ Happy coding!
 
 ---
 
-## Recommended Command for Developer Workflow
+## Recommended Command for Dynamic Developer Workflow
 
 ```bash
 docker run -it \
   --rm \
   --network roadmap-net \
+  -p 3000:3000 \
   -v "$PWD":/usr/src/app \
+  -v bundle_cache:/bundle \
   -w /usr/src/app \
   roadmap-web \
   /bin/bash
@@ -262,11 +264,14 @@ docker run -it \
 
 You'll be in a shell at `/usr/src/app` with your **local code mounted**, so any file changes on your host will **instantly reflect inside the container**.
 
-You can now run things like:
+You must now run:
 
 ```bash
+bundle config set path /bundle
 bundle install
 yarn install
+rails assets:clobber
+rails assets:precompile
 bin/rails server -b 0.0.0.0
 ```
 

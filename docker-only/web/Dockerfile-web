@@ -45,10 +45,6 @@ RUN gem install bundler && \
 COPY . .
 RUN yarn install
 
-RUN rails assets:clobber
-RUN rails assets:precompile
-
-
 EXPOSE 3000
 
 CMD ["bundle", "exec", "puma", "-C", "config/puma.rb"]

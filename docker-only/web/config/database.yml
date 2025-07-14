@@ -17,7 +17,7 @@ staging:
 development:
   adapter: postgresql
   encoding: utf8
-  host: host.docker.internal
+  host: roadmap-db
   port: 5432
   database: <%= ENV['DB_NAME'] %>
   username: <%= ENV['DB_USERNAME'] %>

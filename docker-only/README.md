@@ -189,6 +189,7 @@ docker run -d \
   --name roadmap-web \
   --network roadmap-net \
   -p 3000:3000 \
+  -v "./log:/usr/src/app/log" \
   roadmap-web
 ```
 

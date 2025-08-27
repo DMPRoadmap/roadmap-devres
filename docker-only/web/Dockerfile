@@ -52,8 +52,4 @@ RUN yarn install
 
 EXPOSE 3000
 
-# Precompile Rails assets
-RUN bundle exec rails assets:clobber && \
-    bundle exec rails assets:precompile
-
 # CMD ["bundle", "exec", "puma", "-C", "config/puma.rb"]

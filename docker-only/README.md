@@ -183,7 +183,7 @@ This prepares the web app directory with all necessary Docker and configuration 
 Make sure you’re inside the `roadmap-main` directory, then run:
 
 ```bash
-docker build --no-cache -t roadmap-main .
+docker build --no-cache -t roadmap-web .
 ```
 
 #### 5.2 Run the container

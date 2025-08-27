@@ -246,6 +246,7 @@ Happy coding!
 docker run \
   -it \
   --rm \
+  --name roadmap-web \
   --network roadmap-net \
   -p 3000:3000 \
   -v "$PWD":/usr/src/app \

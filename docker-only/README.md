@@ -70,10 +70,10 @@ This uses the official PostgreSQL 17 image.
 
 #### 3.2 Build the PostgreSQL Docker image
 
-Run this command in the folder containing `Dockerfile-db`:
+Run this command in the folder containing `Dockerfile`:
 
 ```bash
-docker build --no-cache -t roadmap-db -f Dockerfile-db .
+docker build --no-cache -t roadmap-db -f Dockerfile .
 ```
 
 #### 3.3 Run the PostgreSQL container
@@ -90,7 +90,7 @@ docker run -d \
   roadmap-db
 ```
 
-Now PostgreSQL 17 is running with password `roadmap`, data persisted, accessible from your host and other containers.
+Now PostgreSQL 15 is running with password `roadmap`, data persisted, accessible from your host and other containers.
 
 
 You can test the PostgreSQL container with one of the following methods:
@@ -102,7 +102,13 @@ Run:
 ```bash
 psql -h localhost -U postgres -p 5432 -W
 ```
+**Option 2: Login to your roadmap-db container**
 
+Run a shell inside the running container:
+
+```bash
+docker exec -it roadmap-db bash
+```
 
 **Option 2: Using Docker (psql via temporary container)**
 
@@ -111,7 +117,7 @@ If your host doesn’t have `psql`, run this:
 ```bash
 docker run -it --rm \
   --network roadmap-net \
-  postgres:17 \
+  postgres:15 \
   /bin/bash
 ```
 then type
@@ -148,7 +154,7 @@ CREATE DATABASE roadmap
 #### 4.1 Clone the roadmap repository
 
 ```bash
-git clone git@github.com:DMPRoadmap/roadmap.git roadmap-web
+git clone git@github.com:DMPRoadmap/roadmap.git roadmap-roadmap
 ```
 
 #### 4.2 Clone the roadmap-devres repository
@@ -157,14 +163,14 @@ git clone git@github.com:DMPRoadmap/roadmap.git roadmap-web
 git clone git@github.com:DMPRoadmap/roadmap-devres.git roadmap-devres
 ```
 
-#### 4.3 Copy developer-specific files into `roadmap-web`
+#### 4.3 Copy developer-specific files into `roadmap-main`
 
 ```bash
-cp roadmap-devres/docker-only/web/Dockerfile-web roadmap-web/
-cp roadmap-devres/docker-only/web/.env roadmap-web/
-cp roadmap-devres/docker-only/web/config/credentials.yml.enc roadmap-web/config/
-cp roadmap-devres/docker-only/web/config/database.yml roadmap-web/config/
-cp roadmap-devres/docker-only/web/config/master.key roadmap-web/config/
+cp roadmap-devres/docker-only/web/Dockerfile roadmap-main/
+cp roadmap-devres/docker-only/web/.env roadmap-main/
+cp roadmap-devres/docker-only/web/config/credentials.yml.enc roadmap-main/config/
+cp roadmap-devres/docker-only/web/config/database.yml roadmap-main/config/
+cp roadmap-devres/docker-only/web/config/master.key roadmap-main/config/
 ```
 
 This prepares the web app directory with all necessary Docker and configuration files.
@@ -174,10 +180,10 @@ This prepares the web app directory with all necessary Docker and configuration 
 
 #### 5.1 Build the Docker image
 
-Make sure you’re inside the `roadmap-web` directory, then run:
+Make sure you’re inside the `roadmap-main` directory, then run:
 
 ```bash
-docker build --no-cache -t roadmap-web -f Dockerfile-web .
+docker build --no-cache -t roadmap-main .
 ```
 
 #### 5.2 Run the container
@@ -220,7 +226,7 @@ Database 'roadmap' already exists
 ```bash
 root@9840432b7e33:/usr/src/app# rails db:migrate
 ```
-Output 
+Output
 
 ```bash
 Running via Spring preloader in process 114
@@ -237,12 +243,12 @@ Happy coding!
 ## Recommended Command for Dynamic Developer Workflow
 
 ```bash
-docker run -it \
+docker run \
+  -it \
   --rm \
   --network roadmap-net \
   -p 3000:3000 \
   -v "$PWD":/usr/src/app \
-  -v bundle_cache:/bundle \
   -w /usr/src/app \
   roadmap-web \
   /bin/bash
@@ -265,7 +271,7 @@ docker run -it \
 
 You'll be in a shell at `/usr/src/app` with your **local code mounted**, so any file changes on your host will **instantly reflect inside the container**.
 
-You must now run:
+You could now run:
 
 ```bash
 bundle config set path /bundle
@@ -282,4 +288,9 @@ Or migrations:
 bin/rails db:migrate
 ```
 
+Or developement
+
+```bash
+bin/dev
+```
 

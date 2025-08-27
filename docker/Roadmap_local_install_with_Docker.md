@@ -1,5 +1,7 @@
 # Roadmap: local install with Docker
 
+## THIS FILE IS DEPRECATED!!!
+
 ## 1. Clone the repositories
 
 ### Clone the Docker configuration repo
@@ -67,7 +69,7 @@ One might need to add their own config changes to `.env` file based on the provi
 3. Clear and then precompile the assets:
 
 ```bash
-    rails assets:clobber; rails assets:precompile
+    rails assets:clobber; rails assets:precompile;
 ```
 
 4. Exit the container:
